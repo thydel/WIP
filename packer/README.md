@@ -38,3 +38,37 @@ aws configure --profile perso
 export AWS_DEFAULT_PROFILE=epi
 aws ec2 describe-instances
 ```
+
+# Create an account on digitalocean
+
+# Getting started
+
+Follow [Getting started][], create and use [example](example.json)
+
+```
+packer validate example.json
+ export ak=aws_access_key
+ export sk=aws_secret_key
+packer build -var "aws_access_key=$ak" -var "aws_secret_key=$sk" example.json
+packer validate -var 'do_api_token=dummy' example.json
+ export dot=do_api_token
+packer build -var "aws_access_key=$ak" -var "aws_secret_key=$sk" -var "do_api_token=$dot" example.json
+packer build -only=amazon-ebs -var "aws_access_key=$ak" -var "aws_secret_key=$sk" -var "do_api_token=$dot" example.json
+```
+
+[Getting started]: https://www.packer.io/intro/getting-started/install.html "packer.io"
+
+# Play with aws
+
+- Consult [AWS CLI Command Reference][]
+- See [Advanced AWS CLI JMESPath Query Tricks][]
+
+```
+aws ec2 describe-images --owner self
+aws ec2 describe-images --region=us-east-1 --owner self
+```
+
+[AWS CLI Command Reference]: http://docs.aws.amazon.com/cli/latest/reference/ "docs.aws.amazon.com"
+
+[Advanced AWS CLI JMESPath Query Tricks]:
+	http://opensourceconnections.com/blog/2015/07/27/advanced-aws-cli-jmespath-query/ "opensourceconnections.com"
