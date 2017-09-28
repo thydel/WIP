@@ -1,0 +1,8 @@
+---
+
+- id: x
+  tags: [ a, b, c ]
+- id: y
+  tags: [ c, d, e ]
+- id: z
+
